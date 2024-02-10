@@ -1,0 +1,32 @@
+// Write your code here
+import {Component} from 'react'
+import './index.css'
+
+class TransactionItems extends Component {
+  render() {
+    const {TranDetails, onDeleteItem} = this.props
+    const {title, id, amount, type} = TranDetails
+    const DelItem = () => {
+      console.log('Heloo')
+      onDeleteItem(id)
+    }
+    return (
+      <li key={id}>
+        <div className="ItemHead">
+          <hr />
+          <p className="magin1">{title}</p>
+          <p className="magin1">Rs {amount}</p>
+          <p className="magin1">{type}</p>
+          <button className="deleteBut" onClick={DelItem} data-testid="delete">
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/money-manager/delete.png"
+              className="img"
+              alt="delete"
+            />
+          </button>
+        </div>
+      </li>
+    )
+  }
+}
+export default TransactionItems
