@@ -1,0 +1,16 @@
+/* Write your CSS here */
+.ItemHead {
+  display: flex;
+  flex-direction: row;
+}
+.magin1 {
+  margin: 15px;
+  margin-left: 15px;
+}
+.deleteBut {
+  border: none;
+  background-color: transparent;
+}
+.img {
+  height: 30px;
+}
