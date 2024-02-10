@@ -1,0 +1,196 @@
+import {Component} from 'react'
+import {v4 as uuidv4} from 'uuid'
+import TransactionItems from '../TransactionItem'
+
+import './index.css'
+
+const transactionTypeOptions = [
+  {
+    optionId: 'INCOME',
+    displayText: 'Income',
+  },
+  {
+    optionId: 'EXPENSES',
+    displayText: 'Expenses',
+  },
+]
+
+// Write your code here
+
+class MoneyManager extends Component {
+  state = {
+    IntailList: [],
+    total: 0,
+    income: 0,
+    expenses: 0,
+    title: '',
+    amount: '',
+    type: 'Income',
+  }
+  onTitle = event => {
+    this.setState({title: event.target.value})
+  }
+  onAmount = event => {
+    this.setState({amount: event.target.value})
+  }
+  onType = event => {
+    this.setState({type: event.target.value})
+  }
+  onAdd = event => {
+    event.preventDefault()
+    const {IntailList, title, amount, type, total, income, expenses} =
+      this.state
+    let Inval
+
+    const newItem = {
+      id: uuidv4(),
+      title,
+      amount,
+      type,
+    }
+    // {IntailList: [...preSate.IntailList, newItem],total:Inval})}
+    this.setState(preState => {
+      let Inc = preState.income
+      let Enc = preState.expenses
+      console.log(typeof total)
+      if (type === 'Income') {
+        Inval = preState.total + parseInt(amount)
+        Inc = Inc + parseInt(amount)
+      } else {
+        Inval = preState.total - parseInt(amount)
+        Enc = Enc + parseInt(amount)
+        console.log(Enc)
+      }
+      console.log(typeof Inval)
+      return {
+        IntailList: [...preState.IntailList, newItem],
+        total: Inval,
+        title: '',
+        amount: '',
+        income: Inc,
+        expenses: Enc,
+      }
+    })
+  }
+  onDeleteItem = id => {
+    const {IntailList, total, expenses, income} = this.state
+    const filteredList = IntailList.filter(everyItem => everyItem.id !== id)
+    const len = filteredList.length
+    if (len === 0) {
+      this.setState({IntailList: filteredList, expenses: 0, income: 0})
+    } else {
+      this.setState({IntailList: filteredList})
+    }
+  }
+
+  render() {
+    const {IntailList, total, income, expenses, type, amount, title} =
+      this.state
+
+    return (
+      <div className="bg">
+        <div>
+          <h1>Hi Richard</h1>
+          <p>Welcome back to your MoneyManager</p>
+        </div>
+        <div className="bank">
+          <div className="money">
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/money-manager/balance-image.png "
+              alt="balance"
+              className="bankImg"
+            />
+            <div>
+              <p>Your Balance </p>
+              <p data-testid="balanceAmount">Rs {total}</p>
+            </div>
+          </div>
+          <div className="money1">
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/money-manager/income-image.png"
+              alt="income"
+              className="bankImg"
+            />
+            <div>
+              <p>Your Income </p>
+              <p data-testid="incomeAmount">Rs {income}</p>
+            </div>
+          </div>
+          <div className="money2">
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/money-manager/expenses-image.png"
+              alt="expenses"
+              className="bankImg"
+            />
+            <div>
+              <p>Your Expenses</p>
+              <p data-testid="expensesAmount">Rs {expenses}</p>
+            </div>
+          </div>
+        </div>
+        <div className="card">
+          <div>
+            <form className="transactionCard">
+              <h1>Add Transaction</h1>
+              <label htmlFor="title" className="label">
+                Title
+              </label>
+              <input
+                type="input"
+                placeholder="title"
+                id="title"
+                className="input"
+                onChange={this.onTitle}
+                value={title}
+              />
+              <label htmlFor="Amount" className="label">
+                Amount
+              </label>
+              <input
+                type="input"
+                id="Amount"
+                placeholder="Amount"
+                className="input"
+                onChange={this.onAmount}
+                value={amount}
+              />
+              <label className="label" htmlFor="drop">
+                Type
+              </label>
+              <select className="drop" id="drop" onChange={this.onType}>
+                {transactionTypeOptions.map(eachItem => (
+                  <option value={eachItem.optionId} key={eachItem.optionId}>
+                    {eachItem.displayText}{' '}
+                  </option>
+                ))}
+              </select>
+              <button className="but" onClick={this.onAdd}>
+                Add
+              </button>
+            </form>
+          </div>
+          <div className="transactionCard1">
+            <h1>History</h1>
+            <div className="card1">
+              <div className="TitleHead">
+                <p className="magin">Title</p>
+                <p className="magin">Amount</p>
+                <p className="magin">Type</p>
+              </div>
+              <ul type="none">
+                {IntailList.map(each => (
+                  <TransactionItems
+                    TranDetails={each}
+                    key={each.id}
+                    onDeleteItem={this.onDeleteItem}
+                  />
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+export default MoneyManager
