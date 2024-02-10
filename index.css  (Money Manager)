@@ -1,0 +1,114 @@
+/* Write your CSS here */
+
+.bg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bank {
+  display: flex;
+  flex-direction: row;
+}
+.money {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  background-color: #ecfccb;
+  height: 100px;
+  width: 200px;
+  border-radius: 10px;
+}
+.money1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  background-color: #cffafe;
+  height: 100px;
+  width: 200px;
+  border-radius: 10px;
+}
+.money2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  background-color: #ede9fe;
+  height: 100px;
+  width: 200px;
+  border-radius: 10px;
+}
+.bankImg {
+  height: 50px;
+  margin: 20px;
+}
+.transactionCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #1e293b;
+  padding: 20px;
+  box-shadow: #cffafe;
+  margin: 10px;
+}
+.label {
+  padding-right: 140px;
+  margin: 10px;
+  color: #334155;
+  font-family: 'roboto';
+  font-weight: 700;
+}
+.drop {
+  padding-right: 120px;
+  margin: 10px;
+  height: 40px;
+}
+.input {
+  border: 2px solid #1e293b;
+  height: 30px;
+  margin: 5px;
+  width: 180px;
+}
+.but {
+  background-color: #7c3aed;
+  color: #ffffff;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 140px;
+}
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.transactionCard1 {
+  display: flex;
+  flex-direction: column;
+
+  border: 2px solid #1e293b;
+  padding: 20px;
+  box-shadow: #cffafe;
+  margin: 10px;
+  height: 428px;
+  width: 300px;
+}
+.TitleHead {
+  display: flex;
+  flex-direction: row;
+}
+.magin {
+  margin: 10px;
+  margin-left: 20px;
+}
+.card1 {
+  border: 2px solid #1e293b;
+}
